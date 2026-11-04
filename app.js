@@ -469,7 +469,7 @@
       body = `<div class="picks">${[1, 2, 3, 4, 5, 6]
         .map((k) => {
           const v = k * f.face;
-          return `<button type="button" class="pick${cur === v ? ' on' : ''}" data-val="${v}"><b>${k}×</b><small>= ${v}</small></button>`;
+          return `<button type="button" class="pick${cur === v ? ' on' : ''}" data-val="${v}"><b>${v}</b><small>${k}×</small></button>`;
         })
         .join('')}</div>`;
     } else if (mode === 'fixed') {
