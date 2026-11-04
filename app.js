@@ -418,6 +418,29 @@
   });
 
   $('#btn-undo').addEventListener('click', undo);
+
+  // Fullscreen (iPad Safari supports it for pages; not needed when launched from the home screen)
+  const fsEl = () => document.fullscreenElement || document.webkitFullscreenElement;
+  const fsEnabled = document.fullscreenEnabled || document.webkitFullscreenEnabled;
+  const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+  const fsBtn = $('#btn-fs');
+  const syncFs = () => {
+    fsBtn.textContent = fsEl() ? '⤡ Vollbild beenden' : '⛶ Vollbild';
+  };
+  if (fsEnabled && !standalone) {
+    fsBtn.hidden = false;
+    fsBtn.addEventListener('click', () => {
+      const root = document.documentElement;
+      try {
+        if (fsEl()) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+        else (root.requestFullscreen || root.webkitRequestFullscreen).call(root);
+      } catch {
+        toast('Vollbild wird nicht unterstützt');
+      }
+    });
+    document.addEventListener('fullscreenchange', syncFs);
+    document.addEventListener('webkitfullscreenchange', syncFs);
+  }
   $('#btn-new').addEventListener('click', openSetup);
 
   function commit(p, c, fid, val) {

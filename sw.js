@@ -1,5 +1,5 @@
 // Bump the version whenever app files change so clients pick up the update.
-const CACHE = 'yatzy-v5';
+const CACHE = 'yatzy-v6';
 const ASSETS = [
   './',
   './index.html',
