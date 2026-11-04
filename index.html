@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Yatzy Spielblatt</title>
+  <meta name="description" content="Digitales Yatzy-Spielblatt für 2–4 Spieler">
+  <meta name="theme-color" content="#1e6b52">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Yatzy">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="setup" class="screen setup" hidden>
+    <div class="setup-inner">
+      <header class="setup-head">
+        <img src="icons/icon-192.png" alt="" class="logo" width="64" height="64">
+        <div>
+          <h1>Yatzy</h1>
+          <p class="muted">Spielblatt · 4 Spalten pro Spieler</p>
+        </div>
+      </header>
+      <div id="setup-body"></div>
+    </div>
+  </main>
+
+  <main id="game" class="screen game" hidden>
+    <header class="topbar">
+      <div id="status" class="status"></div>
+      <div class="actions">
+        <button type="button" class="btn" id="btn-undo">↶ Rückgängig</button>
+        <button type="button" class="btn" id="btn-new">Neues Spiel</button>
+      </div>
+    </header>
+    <div class="board-wrap">
+      <div id="board" class="board" role="grid" aria-label="Spielblatt"></div>
+    </div>
+  </main>
+
+  <dialog id="entry" class="dlg"></dialog>
+  <dialog id="results" class="dlg dlg-wide"></dialog>
+  <dialog id="confirm" class="dlg dlg-small"></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
